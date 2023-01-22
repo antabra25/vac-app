@@ -1,0 +1,13 @@
+.run_log
+.idea
+./venv
+.env
+.pyc
+/app/visitors/*.png
+app/users/*.png
+app/QR/*.png
+app/reports/*.csv
+app/check/*.png
+__pycache__/
+routers/__pycache__/
+routers/__pycache__/*
