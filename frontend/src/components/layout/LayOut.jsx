@@ -17,9 +17,9 @@ const LayOut = () => {
                 margin: '0',
             }}>
                 <Banner/>
-                {location.pathname === "/login" || location.pathname==="/set-location" ? null : <NavBar/>}
+                {location.pathname === "/" || location.pathname==="/set-location" ? null : <NavBar/>}
                 <Content/>
-                {location.pathname === "/login" ? null : <Footer/>}
+                {location.pathname === "/" ? null : <Footer/>}
             </Stack>
         </div>
     )
