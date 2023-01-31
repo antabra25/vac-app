@@ -44,52 +44,52 @@ const Content = () => {
             <AppContent>
 
                 <Routes>
-                    <Route path="/home" element={<Auth redirectTo="/login" destination="/home"> <Home/></Auth>}/>
-                    <Route path="/login" element={<Login/>}/>
+                     <Route path="/" element={<Login/>}/>
+                    <Route path="/home" element={<Auth redirectTo="/" destination="/home"> <Home/></Auth>}/>
                     <Route path="/add-visitor"
-                           element={<Auth redirectTo="/login" destination="/add-visitor"><AddVisitor/></Auth>}/>
+                           element={<Auth redirectTo="/" destination="/add-visitor"><AddVisitor/></Auth>}/>
                     <Route path="/add-building"
-                           element={<Admin redirectTo="/login" destination="/add-building"><AddBuilding/></Admin>}/>
+                           element={<Admin redirectTo="/" destination="/add-building"><AddBuilding/></Admin>}/>
                     <Route path="/edit-building/:id"
-                           element={<Admin redirectTo="/login" destination="/edit-building/:id">
+                           element={<Admin redirectTo="/" destination="/edit-building/:id">
                                <AddBuilding/></Admin>}/>
                     <Route path="/add-office"
-                           element={<Admin redirectTo="/login" destination="/add-office"> <AddOffice/></Admin>}/>
+                           element={<Admin redirectTo="/" destination="/add-office"> <AddOffice/></Admin>}/>
                     <Route path="/edit-office/:id"
-                           element={<Admin redirectTo="/login" destination="/edit-office:id"> <AddOffice/></Admin>}/>
+                           element={<Admin redirectTo="/" destination="/edit-office:id"> <AddOffice/></Admin>}/>
                     <Route path="/add-reason"
-                           element={<Admin redirectTo="/login" destination="/add-reason"> <AddReason/></Admin>}/>
+                           element={<Admin redirectTo="/" destination="/add-reason"> <AddReason/></Admin>}/>
                     <Route path="/edit-reason/:id"
-                           element={<Admin redirectTo="/login" destination="/edit-reason/:id"> <AddReason/></Admin>}/>
+                           element={<Admin redirectTo="/" destination="/edit-reason/:id"> <AddReason/></Admin>}/>
                     <Route path="/add-location"
-                           element={<Admin redirectTo="/login" destination="/add-location"> <AddLocation/></Admin>}/>
+                           element={<Admin redirectTo="/" destination="/add-location"> <AddLocation/></Admin>}/>
                     <Route path="/edit-location/:id"
-                           element={<Admin redirectTo="/login" destination="/edit-location/:id">
+                           element={<Admin redirectTo="/" destination="/edit-location/:id">
                                <AddLocation/></Admin>}/>
                     <Route path="/add-user"
-                           element={<Admin redirectTo="/login" destination="/add-user"> <AddUser/></Admin>}/>
+                           element={<Admin redirectTo="/" destination="/add-user"> <AddUser/></Admin>}/>
                     <Route path="/edit-user/:id"
-                           element={<Admin redirectTo="/login" destination="edit-user/:id"> <AddUser/></Admin>}/>
-                    <Route path="/users" element={<Admin redirectTo="/login" destination="/users"> <Users/></Admin>}/>
+                           element={<Admin redirectTo="/" destination="edit-user/:id"> <AddUser/></Admin>}/>
+                    <Route path="/users" element={<Admin redirectTo="/" destination="/users"> <Users/></Admin>}/>
                     <Route path="/offices"
-                           element={<Admin redirectTo="/login" destination="/offices"> <Offices/></Admin>}/>
+                           element={<Admin redirectTo="/" destination="/offices"> <Offices/></Admin>}/>
                     <Route path="/buildings"
-                           element={<Admin redirectTo="/login" destination="/buildings"> <Buildings/></Admin>}/>
+                           element={<Admin redirectTo="/" destination="/buildings"> <Buildings/></Admin>}/>
                     <Route path="/reasons"
-                           element={<Admin redirectTo="login" destination="/reasons"> <Reasons/></Admin>}/>
+                           element={<Admin redirectTo="/" destination="/reasons"> <Reasons/></Admin>}/>
                     <Route path="/visitors" element={<Visitors/>}/>
-                    <Route path="/check" element={<Auth redirectTo="/login" destination="/check"><CheckIn/></Auth>}/>
-                    <Route path="/active-visitors" element={<Auth redirectTo="/login" destination="/active-visitors">
+                    <Route path="/check" element={<Auth redirectTo="/" destination="/check"><CheckIn/></Auth>}/>
+                    <Route path="/active-visitors" element={<Auth redirectTo="/" destination="/active-visitors">
                         <ActiveVisitors/></Auth>}/>
                     <Route path="/set-location" element={<Forward redirectTo="/home" destination="/set-location">
                         <MarkLocation/></Forward>}/>
                     <Route path="/locations" element={<Locations/>}/>
                     <Route path="/reports"
-                           element={<Admin redirectTo="/login" destination="/reports"> <Reports/></Admin>}/>
+                           element={<Admin redirectTo="/" destination="/reports"> <Reports/></Admin>}/>
                     <Route path="/generator/"
                            element={<Generator/>}/>
                     <Route path="/passes"
-                           element={<Admin redirectTo="/login" destination="/passes"> <Tickets/></Admin>}/>
+                           element={<Admin redirectTo="/" destination="/passes"> <Tickets/></Admin>}/>
                     <Route path="/add-devices" element={<AddDevices/>}/>
                     <Route path="/*" element={<NotFound/>}/>
 
