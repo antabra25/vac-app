@@ -16,7 +16,7 @@ class Settings(BaseSettings):
     description: Optional[str] = "API para el control de Acceso Visitantes del MPPEFC"
 
     class Config:
-        env_file = ".env"
+        env_file = "../.env"
 
 
 settings = Settings()
