@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.openapi.models import Response
 from sqlalchemy.orm import Session
-from app import schemas, models
-from app.database import get_db
-from app import oauth2
+from .. import schemas, models
+from .. database import get_db
+from .. import oauth2
 
 router = APIRouter(prefix="/buildings", tags=['Buildings'])
 

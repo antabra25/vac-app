@@ -1,7 +1,7 @@
 import os
 import psycopg2
-from app import utils
-from app.config import settings
+from . import utils
+from .config import settings
 
 
 def startup_config():

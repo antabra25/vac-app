@@ -79,7 +79,7 @@ const Visitors = () => {
                                  onBlur={handleSelectBlur}
                                  value={formValues.field} error={formErrors.field}
                                  helperText={formErrors.field}
-                                 options={filters}/>
+                                 options={filters} />
                     <FormButton validate={() => isValidForm(formValues)}>Enviar</FormButton>
                 </Stack>
             </Form>

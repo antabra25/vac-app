@@ -1,8 +1,8 @@
 from passlib.context import CryptContext
 from fastapi import HTTPException
-from app.config import settings
+from .config import settings
 from starlette import status
-from app import models
+from . import models
 import base64
 import os
 

@@ -8,7 +8,7 @@ services:
     ports:
       - 8000:8000
     environment:
-      DATABASE_HOSTNAME: 172.26.0.2
+      DATABASE_HOSTNAME: postgres
       DATABASE_PORT: 5432
       DATABASE_PASSWORD: larios
       DATABASE_NAME: control

@@ -1,7 +1,7 @@
 from fastapi import Response, status, HTTPException, Depends, APIRouter
 from sqlalchemy import and_
 from sqlalchemy.orm import Session
-from app.config import settings
+from ..config import settings
 from typing import List, Optional
 from .. import models, schemas, oauth2
 from ..utils import format_output
@@ -16,13 +16,21 @@ router = APIRouter(prefix="/report", tags=['Report'])
 @router.post("/", status_code=status.HTTP_201_CREATED)
 async def generate_report(report: schemas.GenerateReport, db: Session = Depends(get_db),
                           current_user=Depends(oauth2.get_current_user)):
+    # --------------------------- Range date-------------------------------------------------
+
+    # -----------start date------------------------------------------------------------------
     start_year, start_month, start_day = report.since.split("-")  # split the date
     start_date = datetime.datetime(int(start_year), int(start_month), int(start_day), 1, 5, 5,
                                    100000)  # create a date object
+
+    # -----------end date-----------------------------------------------------------------------
     end_year, end_month, end_day = report.until.split("-")
     end_date = datetime.datetime(int(end_year), int(end_month), int(end_day), 23, 59, 55, 100000)
+
+    # ----------- Visits in the range date
     visits = db.query(models.Visit).filter(models.Visit.date.between(start_date, end_date)).filter(
         and_(models.Visit.building_id == report.building, models.Visit.office_id == report.office)).all()
+
     if not visits:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f'there is not visits with this parameters')
     visits = format_output(visits)

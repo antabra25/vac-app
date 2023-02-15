@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from . import models
 from .database import engine
 from .config import settings
-from app.routers import visit, office, reason, visitor, building, location, role, user, passes, auth, check, home, \
+from .routers import visit, office, reason, visitor, building, location, role, user, passes, auth, check, home, \
     report, device, car
 from fastapi.staticfiles import StaticFiles
 from .startup import startup_config

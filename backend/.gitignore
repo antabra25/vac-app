@@ -1,7 +1,7 @@
 .run_log
 .idea
 ./venv
-.env
+app/.env
 .pyc
 /app/visitors/*.png
 app/users/*.png

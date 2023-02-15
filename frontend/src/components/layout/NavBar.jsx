@@ -14,7 +14,7 @@ const NavBar = () => {
 
     const logOut = () => {
         logoutUser()
-        navigate("/login")
+        navigate("/")
     }
     return (
         <div className="nav-container">

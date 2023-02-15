@@ -43,7 +43,7 @@ const ActiveVisitors = () => {
         <Main>
             <Title>Visitantes Activos</Title>
             <Form onSubmit={handleSearch}>
-                <Stack direction="row" spacing={2}>
+                <Stack direction="row" spacing={2} height='55px'>
                     <InputSearch id="search" name="search" label="Buscar" value={formValues.search}
                                  onChange={handleChange} onBlur={handleBlur} error={formErrors.search}
                                  helperText={formErrors.search}/>
