@@ -1,4 +1,12 @@
 services:
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_PASSWORD: larios
+      POSTGRES_USER: postgres
+      POSTGRES_DB: control
+    volumes:
+      - vac:/var/lib/postgresql/data
   frontend:
     build: ./frontend
     ports:
@@ -19,16 +27,6 @@ services:
       DOMAIN_NAME: http://127.0.0.1:8000
     depends_on:
       - postgres
-
-  postgres:
-    image: postgres:latest
-    environment:
-      POSTGRES_PASSWORD: larios
-      POSTGRES_USER: postgres
-      POSTGRES_DB: control
-    volumes:
-      - vac:/var/lib/postgresql/data
-
 volumes:
   vac:
       
