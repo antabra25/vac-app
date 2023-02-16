@@ -197,8 +197,8 @@ class CreateVisit(BaseVisit):
 class GenerateReport(BaseModel):
     since: str
     until: str
-    office: int
-    building: int
+    office: str
+    building: str
 
 
 class BaseReport(BaseModel):

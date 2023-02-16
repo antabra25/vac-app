@@ -10,6 +10,8 @@ import {isEmpty} from "../../validations/validations.js";
 import {Main} from "../styled/StyledLayout"
 import useBuildings from "../../hooks/useBuildings.js";
 import useOffices from "../../hooks/useOffices.js";
+import {createReport} from "../../services/useReport"
+import {toast} from "react-toastify";
 
 
 const Reports = () => {
@@ -51,9 +53,20 @@ const Reports = () => {
         handleSelectChange,
         handleSelectBlur
     } = useForm(initialValues, validateForm)
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
         console.log(formValues)
+        try {
+            const response = await createReport(formValues)
+            if (response.status === 201) {
+                toast.success("Reporte Generado Correctamente.")
+            }
+        } catch (e) {
+
+            toast.error("Error en la generacion del reporte")
+
+        }
+
     }
 
     return (

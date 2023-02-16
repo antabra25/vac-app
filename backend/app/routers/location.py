@@ -2,9 +2,9 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.openapi.models import Response
 from sqlalchemy.orm import Session
 from typing import List
-from app import schemas, models
-from app.database import get_db
-from app import oauth2
+from .. import schemas, models
+from ..database import get_db
+from .. import oauth2
 
 router = APIRouter(prefix="/locations", tags=["Locations"])
 
@@ -12,7 +12,6 @@ router = APIRouter(prefix="/locations", tags=["Locations"])
 @router.post("/", status_code=status.HTTP_201_CREATED)
 async def create_location(location: schemas.CreateLocation, db: Session = Depends(get_db),
                           current_user=Depends(oauth2.get_current_user)):
-
     if current_user.role != 1:
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="You don't have the proper permissions")
 
@@ -53,7 +52,7 @@ async def get_location(id: int, db: Session = Depends(get_db), current_user=Depe
 async def update_location(location_updated: schemas.CreateLocation, id: int, db: Session = Depends(get_db),
                           current_user=Depends(oauth2.get_current_user)):
     building = db.query(models.Building).filter(models.Building.name == location_updated.building).first()
-    location= db.query(models.Location).filter(models.Location._id == id).first()
+    location = db.query(models.Location).filter(models.Location._id == id).first()
     if not location:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
                             detail=f"There is not location with this {id} ")
@@ -75,4 +74,3 @@ async def delete_location(id: int, db: Session = Depends(get_db), current_user=D
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Location with {id} not exists")
     query.delete(synchronize_session=False)
     db.commit()
-

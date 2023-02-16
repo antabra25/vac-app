@@ -4,14 +4,14 @@ from fastapi.openapi.models import Response
 from PIL import ImageDraw, ImageFont
 from sqlalchemy.orm import Session
 from sqlalchemy import or_
-from app import models
+from .. import models
 from ..config import settings
 from ..database import get_db
-from app import schemas
+from .. import schemas
 import os.path
 import qrcode
 import base64
-from app import oauth2
+from .. import oauth2
 
 router = APIRouter(prefix="/pass", tags=["Pass"])
 

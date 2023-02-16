@@ -4,7 +4,7 @@ from fastapi.openapi.models import Response
 from sqlalchemy.orm import Session
 from starlette import status
 from ..database import get_db
-from app import schemas, models, utils, oauth2
+from .. import schemas, models, utils, oauth2
 
 router = APIRouter(prefix="/users", tags=['Users'])
 

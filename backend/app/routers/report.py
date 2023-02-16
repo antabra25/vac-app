@@ -16,6 +16,8 @@ router = APIRouter(prefix="/report", tags=['Report'])
 @router.post("/", status_code=status.HTTP_201_CREATED)
 async def generate_report(report: schemas.GenerateReport, db: Session = Depends(get_db),
                           current_user=Depends(oauth2.get_current_user)):
+    building = db.query(models.Building).filter(models.Building.name == report.building).first()
+    office = db.query(models.Office).filter(models.Office.name == report.office).first()
     # --------------------------- Range date-------------------------------------------------
 
     # -----------start date------------------------------------------------------------------
@@ -29,7 +31,7 @@ async def generate_report(report: schemas.GenerateReport, db: Session = Depends(
 
     # ----------- Visits in the range date
     visits = db.query(models.Visit).filter(models.Visit.date.between(start_date, end_date)).filter(
-        and_(models.Visit.building_id == report.building, models.Visit.office_id == report.office)).all()
+        and_(models.Visit.building == building, models.Visit.office == office)).all()
 
     if not visits:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f'there is not visits with this parameters')
