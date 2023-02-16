@@ -31,10 +31,10 @@ def generate_qr(pass_id, building_id, db):
     x = (width / 2) - 6
     y = height - 30
     draw = ImageDraw.Draw(img)
-    font = ImageFont.truetype('/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf', 26)
+    font = ImageFont.truetype('/usr/share/fonts/truetype/dajavu/DejaVuSans-Bold.ttf', 26)
     draw.text((x, y), text_to_print, font=font, fill="black", align="center")
-    home_path = os.path.expanduser("~")
-    pass_path = f"{home_path}/PycharmProjects/APIMFV/app/QR/{building_id}-{pass_id}.png"
+    home_path = os.getcwd()
+    pass_path = f"{home_path}/app/QR/{building_id}-{pass_id}.png"
     server_path = f"{settings.domain_name}/app/QR/{building_id}-{pass_id}.png"
     img.save(pass_path)
     return server_path

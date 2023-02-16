@@ -69,6 +69,7 @@ const Visitors = () => {
 
         <Main>
             <Title>Visitas< /Title>
+
             <Form onSubmit={handleSearch}>
                 <Stack direction="row" width="600px" height="60px" spacing={2}>
                     <InputSearch id="search" name="search" label="Buscar"
@@ -79,13 +80,18 @@ const Visitors = () => {
                                  onBlur={handleSelectBlur}
                                  value={formValues.field} error={formErrors.field}
                                  helperText={formErrors.field}
-                                 options={filters} />
+                                 options={filters}/>
                     <FormButton validate={() => isValidForm(formValues)}>Enviar</FormButton>
                 </Stack>
             </Form>
-            <Stack marginTop="4rem">
-                <VisitTable visits={visits} headers={headers} onDelete={handleDelete}/>
-                <Pagination count={Math.floor(total / limit)} page={page} onChange={handleChangePage} color="primary"/>
+            <Stack marginTop="4rem" direction="column">
+                <Stack direction="row" justifyContent="center" spacing={2}>
+                    <VisitTable visits={visits} headers={headers} onDelete={handleDelete}/>
+                </Stack>
+                <Stack>
+                    <Pagination count={Math.floor(total / limit)} page={page} onChange={handleChangePage}
+                                color="primary"/>
+                </Stack>
             </Stack>
         </Main>
 

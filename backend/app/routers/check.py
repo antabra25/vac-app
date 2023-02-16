@@ -16,7 +16,7 @@ router = APIRouter(prefix="/check", tags=['Check'])
 
 def read_qr(user_id):
     home_path = os.path.expanduser("~")
-    rel_check = f'PycharmProjects/APIMFV/app/check/{user_id}.png'  # relative path to file
+    rel_check = f'/app/check/{user_id}.png'  # relative path to file
     full_path = os.path.join(home_path, rel_check)
     try:
         decode_data = decode(Image.open(full_path))  # type: List[dict]
@@ -63,8 +63,8 @@ def read_qr(user_id):
 def save_qr(url: str, user_id: str):
     before, match, raw_url = url.partition('base64,')
     photo_decoded = base64.b64decode(raw_url)
-    home_path = os.path.expanduser("~")
-    photo_path = f"{home_path}/PycharmProjects/APIMFV/app/check/{user_id}.png"
+    home_path = os.getcwd()
+    photo_path = f"{home_path}/app/check/{user_id}.png"
     with open(photo_path, 'wb') as photo:
         photo.write(photo_decoded)
 

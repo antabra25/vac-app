@@ -20,13 +20,13 @@ def verify(plain_password, hashed_password):
 def save_photo(url: str, identifier: str, identity: str):
     before, match, raw_url = url.partition('base64,')
     photo_decoded = base64.b64decode(raw_url)
-    home_path = os.path.expanduser("~")
+    home_path = os.getcwd()
     if identity == 'visitor':
         server_path = f"{settings.domain_name}/app/visitors/{identifier}.png"
-        photo_path = f"{home_path}/PycharmProjects/APIMFV/app/visitors/{identifier}.png"
+        photo_path = f"{home_path}/app/visitors/{identifier}.png"
     elif identity == 'user':
         server_path = f"{settings.domain_name}/app/users/{identifier}.png"
-        photo_path = f"{home_path}/PycharmProjects/APIMFV/app/users/{identifier}.png"
+        photo_path = f"{home_path}/app/users/{identifier}.png"
     try:
         with open(photo_path, 'wb') as photo:
             photo.write(photo_decoded)

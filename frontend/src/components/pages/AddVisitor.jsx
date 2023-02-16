@@ -20,6 +20,7 @@ import {getVisitorById} from "../../services/useVisitors.js";
 import usePass from "../../hooks/usePass.js";
 
 
+
 const AddVisitor = () => {
 
 
@@ -47,10 +48,10 @@ const AddVisitor = () => {
 
         const errors = {}
 
-        if (isEmpty(values.ci)) {
+        if (values.ci.trim() === "") {
             errors.ci = 'Cedula es un campo requerido'
             return errors
-        }else if(!isNumber(values.ci)){
+        } else if (!isNumber(values.ci)) {
             errors.ci = 'Ingresa un valor numerico'
             return errors
         }
@@ -153,6 +154,11 @@ const AddVisitor = () => {
         setFormErrors(validateForm(formValues))
 
     }
+    const handleSelectChangeOffice = async (e) => {
+        handleSelectChange(e)
+        const currentOffice = offices.find(office => office.name === formValues.office)
+        setExtension(currentOffice.phone)
+    }
     const handleGetVisitor = async () => {
 
         try {
@@ -187,9 +193,9 @@ const AddVisitor = () => {
                 <Stack direction='column' spacing={2} width="450px">
                     <Stack direction='row' justifyContent='space-between' spacing={1}>
                         <InputText id="ci" name="ci" label="Numero de Cedula" value={formValues.ci}
-                                     onChange={handleChange} onBlur={handleBlurCi}
-                                     error={formErrors.ci}
-                                     helperText={formErrors.ci}/>
+                                   onChange={handleChange} onBlur={handleBlurCi}
+                                   error={formErrors.ci}
+                                   helperText={formErrors.ci}/>
                         <InputText id="name" name="name" label="Nombre" value={formValues.name} onChange={handleChange}
                                    onBlur={handleBlur} error={formErrors.name} helperText={formErrors.name}/>
 
@@ -199,8 +205,8 @@ const AddVisitor = () => {
                                    onChange={handleChange} onBlur={handleBlur} error={formErrors.lastname}
                                    helperText={formErrors.lastname}/>
                         <InputText id="phone" name="phone" label="Numero de Telefono" value={formValues.phone}
-                                     onChange={handleChange} onBlur={handleBlur} error={formErrors.phone}
-                                     helperText={formErrors.phone}/>
+                                   onChange={handleChange} onBlur={handleBlur} error={formErrors.phone}
+                                   helperText={formErrors.phone}/>
                     </Stack>
 
                     <Typography variant='subtitle1' fontSize="18px" component='h2' mb="1rem">Visita</Typography>
@@ -214,7 +220,7 @@ const AddVisitor = () => {
                                  onChange={handleBuildingSelect} onBlur={handleSelectBlur} error={formErrors.building}
                                  helperText={formErrors.building} options={buildings}/>
                     <SelectField id="office" name="office" label="Oficina" value={formValues.office}
-                                 onChange={handleSelectChange} onBlur={handleSelectBlur} error={formErrors.office}
+                                 onChange={handleSelectChangeOffice} onBlur={handleSelectBlur} error={formErrors.office}
                                  helperText={formErrors.office} options={offices}/>
                     <InputText id="host" name="host" label="Anfitrion" value={formValues.host} onChange={handleChange}
                                onBlur={handleBlur}
@@ -226,9 +232,9 @@ const AddVisitor = () => {
                     <Stack direction='row' justifyContent='space-between' spacing={1}>
 
                         <InputText id="extension" name="extension" label="Extension" value={extension}
-                                     InputProps={{
-                                         readOnly: true,
-                                     }}/>
+                                   InputProps={{
+                                       readOnly: true,
+                                   }}/>
                         <InputText id="ticket" name="ticket" label="Ticket" value={formValues.ticket}
                                    onChange={handleChange} onBlur={handleBlurTicket}
                                    error={formErrors.ticket} helperText={formErrors.ticket}/>

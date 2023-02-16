@@ -37,6 +37,10 @@ async def create_visit(visit: schemas.CreateVisit,
                 db.commit()
     else:
         photo = utils.save_photo(visit.photo, visit.ci, 'visitor')
+        exists_phone = db.query(models.Visitor).filter(models.Visitor.phone == visit.phone).first()
+        if exists_phone:
+            raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"Phone number already exists")
+
         new_visitor = models.Visitor(ci=visit.ci, name=visit.name, lastname=visit.lastname, phone=visit.phone,
                                      photo=photo)
         db.add(new_visitor)

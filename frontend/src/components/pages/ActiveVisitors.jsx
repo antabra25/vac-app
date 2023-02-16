@@ -35,7 +35,7 @@ const ActiveVisitors = () => {
         searchActive(formValues.search)
     }
     const handleCheck = (id) => {
-        check({user:currentUser.user,visitor:id})
+        check({user: currentUser.user, visitor: id})
     }
 
     return (
@@ -43,7 +43,7 @@ const ActiveVisitors = () => {
         <Main>
             <Title>Visitantes Activos</Title>
             <Form onSubmit={handleSearch}>
-                <Stack direction="row" spacing={2} height='55px'>
+                <Stack direction="row" spacing={2} height='55px' sx={{paddingBottom: '2rem'}}>
                     <InputSearch id="search" name="search" label="Buscar" value={formValues.search}
                                  onChange={handleChange} onBlur={handleBlur} error={formErrors.search}
                                  helperText={formErrors.search}/>

@@ -25,9 +25,13 @@ services:
       ALGORITHM: HS256
       ACCESS_TOKEN_EXPIRE_MINUTES: 180
       DOMAIN_NAME: http://127.0.0.1:8000
+    volumes:
+      - app:/api
     depends_on:
-      - postgres
+        - postgres
 volumes:
   vac:
+  app:
+
       
 
